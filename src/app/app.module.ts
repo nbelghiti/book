@@ -11,7 +11,7 @@ import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 
 import { FormsModule } from '@angular/forms';
-import { FilterPipe } from './filter.pipe';
+import { FilterPipe } from './filter/filter.pipe';
 import { RouterModule } from '@angular/router';
 import { BookDetailsComponent } from './components/book-details/book-details.component';
 registerLocaleData(localeFr);

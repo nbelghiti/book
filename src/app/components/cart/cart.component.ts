@@ -9,60 +9,70 @@ import { ReductionService } from 'src/app/services/reduction.service';
 })
 export class CartComponent implements OnInit {
   cartItems = []
-  id:string=""
+  id: string = ""
   offers: any;
-  discounts=[]
-  discount:any
-  bestDiscount:number
-  totalPrice: any;
+  discounts = []
+  discount: any
+  bestDiscount: number
+  totalPrice: any
+
   constructor(private cartservice:CartService,private reduction:ReductionService) { }
 
   ngOnInit(): void {
     this.getCartItems()
   }
+  //get the different items of the shopping cart
   getCartItems(){
     this.cartItems = this.cartservice.get()
     this.totalPrice = this.getTotalPrice().price
-    this.getDiscount()
+    this.getDiscounts()
   }
-  retirer(data){
-    this.cartservice.removeItem(data.isbn)
+
+  deleteItem(id){
+    this.cartservice.removeItem(id)
     this.getCartItems()
   }
+  
+  // get total price items 
   getTotalPrice(){
     return this.cartItems.reduce((accumulator, currentValue) => {
       return {price: accumulator.price + currentValue.price}
     })
   }
+
+  // get all id 
   getAllIdsItems(){
     return this.cartItems.reduce((acc, item)=>{
-      this.id = this.id.concat(item.isbn+',');
+      this.id = this.id.concat(item.isbn + ',')
       return this.id
-    },String)
+    }, String)
   }
-  getDiscount(){
+
+  // get different offers for discount
+  getDiscounts(){
     let ids = this.getAllIdsItems()
     this.reduction.getReduction(ids).subscribe(data=>{
       this.offers = data
-      this.calculeBestDiscount()
+      this.chooseBestDiscount()
     })
   }
-  calculeBestDiscount(){
+
+  // apply promotionals offers and choose the best discount
+  chooseBestDiscount(){
     for (let i = 0; i < this.offers.offers.length; i++) {
-      const element = this.offers.offers[i];
-        switch (element.type) {
-          case 'percentage':
-            this.discounts.push((100 - element.value) / 100)
-            break;
-          case 'minus':
-            this.discounts.push(element.value)
-            break;
-          case'slice':
-            this.discounts.push(element.value * Math.floor( this.totalPrice / element.sliceValue ))
-            break;
-        }
+      const offer = this.offers.offers[i]
+      switch (offer.type) {
+        case 'percentage':
+          this.discounts.push((100 - offer.value) / 100)
+          break;
+        case 'minus':
+          this.discounts.push(offer.value)
+          break;
+        case'slice':
+          this.discounts.push(offer.value * Math.floor( this.totalPrice / offer.sliceValue ))
+          break;
+      }
     }
-    console.log('discount',this.discounts)
     this.setDiscount()
   }
 

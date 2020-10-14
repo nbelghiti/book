@@ -13,7 +13,7 @@
                         <span class="badge badge-secondary badge-pill float-right">{{item.price| currency :'EUR'}}</span>
                       </div>
                       <div class="col-3 float-right">
-                        <button type="button" class="btn btn-outline-danger float-right" (click)="retirer(item)">Retirer</button>
+                        <button type="button" class="btn btn-outline-danger float-right" (click)="deleteItem(item.isbn)">Retirer</button>
                       </div>
                     </div>
                 </div>
