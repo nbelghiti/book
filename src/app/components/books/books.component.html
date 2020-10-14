@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <div class="form-group">
+          <label for="">Search :</label>
+          <input type="text" class="form-control" id="search-text" aria-describedby="search-text" 
+            [(ngModel)]="searchText" placeholder="Enter text to search"autofocus>
+        </div>
+    </div>
+</div>
+<div class="row">
+  <ul class="list-group">
+    <div class="row">
+      <div *ngFor="let book of books | appFilter: searchText" class="book col-md-6 mx-auto">
+        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col-auto d-none d-lg-block">
+              <img src="{{book.cover}}" alt="">
+          </div>
+          <div class="col p-4 d-flex flex-column position-static">
+            <h3 class="mb-0">{{book.title}}</h3>
+            <div class="mb-1 text-muted">{{book.price | currency :'EUR'}} </div>
+            <p class="card-text mb-auto">{{book.synopsis}}</p>
+            <div>
+              <a class=" float-left" [routerLink]="['/book-detail/', book.isbn]">Continue reading</a>
+              <button type="button" class="btn btn-success float-right" (click)="addTocart(book)" >Acheter</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ul>
+</div>
