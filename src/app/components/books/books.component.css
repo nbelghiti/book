@@ -1,12 +1,12 @@
 p {
-    width: 300px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-img{
-    width: 150px;
+img {
+  width: 150px;
 }
-.book{
-    min-width: 550px;
+.book {
+  min-width: 550px;
 }

@@ -1,6 +1,6 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform } from "@angular/core";
 
-@Pipe({ name: 'appFilter' })
+@Pipe({ name: "appFilter" })
 export class FilterPipe implements PipeTransform {
   /**
    * Transform
@@ -18,7 +18,7 @@ export class FilterPipe implements PipeTransform {
     }
     searchText = searchText.toLocaleLowerCase();
 
-    return items.filter(it => {
+    return items.filter((it) => {
       return it.title.toLocaleLowerCase().includes(searchText);
     });
   }

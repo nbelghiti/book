@@ -1,9 +1,9 @@
 <div class="row">
     <div class="col-md-6 mx-auto">
         <div class="form-group">
-          <label for="">Search :</label>
+          <label for="">chercher :</label>
           <input type="text" class="form-control" id="search-text" aria-describedby="search-text" 
-            [(ngModel)]="searchText" placeholder="Enter text to search"autofocus>
+            [(ngModel)]="searchText" placeholder="Taper du text pour chercher"autofocus>
         </div>
     </div>
 </div>
@@ -20,8 +20,8 @@
             <div class="mb-1 text-muted">{{book.price | currency :'EUR'}} </div>
             <p class="card-text mb-auto">{{book.synopsis}}</p>
             <div>
-              <a class=" float-left" [routerLink]="['/book-detail/', book.isbn]">Continue reading</a>
-              <button type="button" class="btn btn-success float-right" (click)="addTocart(book)" >Acheter</button>
+              <a class=" float-left" [routerLink]="['/book-detail/', book.isbn]">Continuer a lire</a>
+              <button type="button" class="btn btn-success float-right" (click)="addTocart(book)" >Ajouter au panier</button>
             </div>
           </div>
         </div>

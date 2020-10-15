@@ -1,11 +1,11 @@
 .container {
-    padding: 15px 25px 20px;
+  padding: 15px 25px 20px;
 }
 .container__image {
-    width: 247px;
-    margin: 0px 9px 0px 0;
-    float: left;
+  width: 247px;
+  margin: 0px 9px 0px 0;
+  float: left;
 }
 .container__text {
-    display: inline;
+  display: inline;
 }

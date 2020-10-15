@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Injectable } from "@angular/core";
+import { Observable, Subject } from "rxjs";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class CartService {
-  products=[]
+  products = [];
   cartCount = new Subject<any>();
   localStorage: Storage;
   constructor() {
@@ -17,28 +17,27 @@ export class CartService {
 
   get() {
     if (this.isLocalStorageSupported) {
-      return(this.localStorage.getItem('cartBook') === null ?   
-       [] : 
-       JSON.parse(this.localStorage.getItem('cartBook')))
+      return this.localStorage.getItem("cartBook") === null
+        ? []
+        : JSON.parse(this.localStorage.getItem("cartBook"));
     }
     return null;
   }
-  addProduct(book:any){
-    if(localStorage.getItem('cartBook')){
-        this.products = JSON.parse(localStorage.getItem('cartBook'));
+  addProduct(book: any) {
+    if (localStorage.getItem("cartBook")) {
+      this.products = JSON.parse(localStorage.getItem("cartBook"));
     }
     this.products.push(book);
-    localStorage.setItem('cartBook', JSON.stringify(this.products));
+    localStorage.setItem("cartBook", JSON.stringify(this.products));
     this.cartCount.next(this.get());
   }
-  removeItem(isbn){
-    let storageItems = JSON.parse(localStorage.getItem('cartBook'));
-    let booksCart = storageItems.filter(product => product.isbn !== isbn );
-    localStorage.setItem('cartBook', JSON.stringify(booksCart));
+  removeItem(id) {
+    let storageItems = JSON.parse(localStorage.getItem("cartBook"));
+    let booksCart = storageItems.filter((product) => product.id !== id);
+    localStorage.setItem("cartBook", JSON.stringify(booksCart));
     this.cartCount.next(this.get());
   }
   get isLocalStorageSupported(): boolean {
-    return !!this.localStorage
+    return !!this.localStorage;
   }
-
 }
