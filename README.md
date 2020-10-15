@@ -1,16 +1,19 @@
 # XebiaBooks
-Mini application
+Mini application.
 Permet d’afficher les livres que l’on souhaite acheter et d’effectuer une recherche libre
-gestion du panier avecl'application de la meilleure offre commerciale possible selon les livres choisie.
+gestion du panier avec l'application de la meilleure offre commerciale possible selon les livres choisie.
 
 # Clone du projet
  git clone https://github.com/nbelghiti/xebiaTest
 
-# Acceder au dosser 
+# Accès au dossier 
  cd xebiaTest
+ 
+# Installation Angular  
+npm install -g @angular/cli
 
-# Installation des dependances 
-npm i
+# Installation des dépendances 
+npm install
 
-# Lancer et ouvrir le projet
+# Lancement et ouverture le projet
 ng serve --open
