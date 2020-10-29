@@ -39,7 +39,7 @@ export class CartComponent implements OnInit {
   getTotalPrice() {
     return this.cartItems.reduce((accumulator, currentValue) => {
       return { price: accumulator.price + currentValue.price };
-    });
+    }, {});
   }
 
   // get all id

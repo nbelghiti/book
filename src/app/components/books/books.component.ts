@@ -1,12 +1,18 @@
-import { Component, EventEmitter, OnInit, Output } from "@angular/core";
+import { Component, EventEmitter, NgModule, OnInit } from "@angular/core";
 import { Book } from "src/app/models/book";
 import { BookService } from "src/app/services/book.service";
 import { CartService } from "src/app/services/cart.service";
-
+import { FilterPipe } from "../../filter/filter.pipe";
+import { CommonModule } from "@angular/common";
 @Component({
   selector: "app-books",
   templateUrl: "./books.component.html",
   styleUrls: ["./books.component.css"],
+})
+@NgModule({
+  declarations: [FilterPipe],
+  imports: [CommonModule],
+  exports: [FilterPipe],
 })
 export class BooksComponent implements OnInit {
   books: Book[] = [];

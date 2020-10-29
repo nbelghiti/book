@@ -9,7 +9,7 @@ export class FilterPipe implements PipeTransform {
    * @param {string} searchText
    * @returns {any[]}
    */
-  transform(items: any[], searchText: string): any[] {
+  transform(items: any[], searchText: string): any {
     if (!items) {
       return [];
     }

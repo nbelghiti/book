@@ -1,16 +1,17 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { BooksComponent } from './books.component';
+import { BooksComponent } from "./books.component";
+import { HttpClientTestingModule } from "@angular/common/http/testing";
 
-describe('BooksComponent', () => {
+describe("BooksComponent", () => {
   let component: BooksComponent;
   let fixture: ComponentFixture<BooksComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BooksComponent ]
-    })
-    .compileComponents();
+      imports: [HttpClientTestingModule],
+      providers: [BooksComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -19,7 +20,7 @@ describe('BooksComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });
